@@ -1,0 +1,1 @@
+Setup for timing functions with datawatchpoint and trace (DWT) and UART printf for Cortex-m4 (m3, m4 and m7 in general).
