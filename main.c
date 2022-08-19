@@ -1,14 +1,13 @@
 #include "main.h"
 
-#define TIME_MEASURE(func)                                              \
-{                                                                       \
-    char buf[32];                                                       \
-    reset_cnt();                                                        \
-start_cnt();                                                        \
-    func;                                                               \
-stop_cnt();                                                         \
-sprintf(buf,"Time: %.10f\n\r",(double)getCycles()/HAL_RCC_GetHCLKFreq()); \
-printf(buf);                                                     \
+#define TIME_MEASURE(func)                                                 \
+{                                                                          \
+    dwt_access_enable(1);                                                  \
+    reset_cnt();                                                           \
+    start_cnt();                                                           \
+    func;                                                                  \
+    stop_cnt();                                                            \
+    printf(#func ": %.2fs\n\r",(double)getCycles()/HAL_RCC_GetHCLKFreq()); \
 }
 
 
